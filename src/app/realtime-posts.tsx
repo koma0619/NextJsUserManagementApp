@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
-import type { Database } from '../../types/supabase'
+import type { Database } from '@/types/supabase'
 
 import Link from 'next/link'
 type Post = Database['public']['Tables']['profiles']['Row']
