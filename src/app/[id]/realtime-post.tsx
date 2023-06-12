@@ -5,7 +5,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 import type { Database } from '@/types/supabase'
 
-type Post = Database['public']['Tables']['profiles']['Row']
+type Post = Database['public']['Tables']['posts']['Row']
 
 export default function RealtimePost({ serverPost }: { serverPost: Post }) {
   const supabase = createClientComponentClient<Database>()

@@ -10,11 +10,11 @@ export default async function ServerComponent() {
   const supabase = createServerComponentClient<Database>({
     cookies,
   })
-  const { data } = await supabase.from('profiles').select('*')
+  const { data } = await supabase.from('posts').select('*')
 
   return (
     <>
-      {/* <NewPost /> */}
+      <NewPost />
       <RealtimePosts serverPosts={data ?? []} />
     </>
   )

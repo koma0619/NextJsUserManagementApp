@@ -3,9 +3,13 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { Auth } from '@supabase/auth-ui-react'
+import {
+  // Import predefined theme
+  ThemeSupa,
+} from '@supabase/auth-ui-shared'
 
 import type { Session } from '@supabase/auth-helpers-nextjs'
-import Post from './[id]/page'
 
 export default function LoginForm({ session }: { session: Session | null }) {
   const [email, setEmail] = useState('')
@@ -41,11 +45,19 @@ export default function LoginForm({ session }: { session: Session | null }) {
   // fetched in a Server Component and passed down as a prop
   return session ? (
     <>
-    <Post params={session}></Post>
-    <button onClick={handleSignOut}>Sign out</button>
+      {/* <Post params={session}></Post> */}
+      <button onClick={handleSignOut}>Sign out</button>
     </>
   ) : (
     <>
+      {/* <Auth
+        supabaseClient={supabase}
+        appearance={{ theme: ThemeSupa }}
+        theme="dark"
+        providers={['google', 'facebook', 'twitter']}
+      /> */}
+
+
       <input name="email" onChange={(e) => setEmail(e.target.value)} value={email} />
       <input
         type="password"

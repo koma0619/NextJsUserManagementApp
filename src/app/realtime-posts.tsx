@@ -6,7 +6,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import type { Database } from '@/types/supabase'
 
 import Link from 'next/link'
-type Post = Database['public']['Tables']['profiles']['Row']
+type Post = Database['public']['Tables']['posts']['Row']
 
 export default function RealtimePosts({ serverPosts }: { serverPosts: Post[] }) {
   const [posts, setPosts] = useState(serverPosts)
@@ -19,7 +19,7 @@ export default function RealtimePosts({ serverPosts }: { serverPosts: Post[] }) 
   useEffect(() => {
     const channel = supabase
       .channel('*')
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'profiles' }, (payload) =>
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'posts' }, (payload) =>
         setPosts((posts) => [...posts, payload.new as Post])
       )
       .subscribe()
@@ -33,7 +33,7 @@ export default function RealtimePosts({ serverPosts }: { serverPosts: Post[] }) 
     <>
       {posts.map((post) => (
         <div key={post.id}>
-          <Link href={`/${post.id}`}>{post.username}:{post.full_name}</Link>
+          <Link href={`/${post.id}`}>{post.title}：{post.content}</Link>
         </div>
       ))}
     </>
