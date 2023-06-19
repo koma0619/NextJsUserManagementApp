@@ -33,7 +33,7 @@ export default function RealtimePosts({ serverPosts }: { serverPosts: Post[] }) 
     <>
       {posts.map((post) => (
         <div key={post.id}>
-          <Link href={`/${post.id}`}>{post.title}：{post.content}</Link>
+          <Link href={`/${post.id}`}><p>{post.title}：{post.content}</p></Link>
         </div>
       ))}
     </>

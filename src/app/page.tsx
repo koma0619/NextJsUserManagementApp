@@ -4,6 +4,7 @@ import RealtimePosts from './realtime-posts'
 import NewPost from './new-post'
 
 import type { Database } from '@/types/supabase'
+import AccountForm from './account/account-form'
 
 
 export default async function ServerComponent() {
@@ -11,6 +12,7 @@ export default async function ServerComponent() {
     cookies,
   })
   const { data } = await supabase.from('posts').select('*')
+
 
   return (
     <>
